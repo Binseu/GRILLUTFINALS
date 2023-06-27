@@ -22,14 +22,14 @@
                     <!-- Email input -->
                     <div class="form-outline mb-2">
                         <label class="form-label h6" for="login_user">USERNAME</label>
-                        <input type="text" id="login_user" class="form-control" placeholder="Username" required="True">
+                        <input type="text" id="login_user" class="form-control1" placeholder="Username">
 
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline">
                         <label class="form-label h6" for="login_password">PASSWORD</label>
-                        <input type="password" id="login_password" class="form-control"  placeholder="Password" required="True">
+                        <input type="password" id="login_password" class="form-control1"  placeholder="Password">
                     </div>
 
                     <!-- 2 column grid layout for inline styling -->

@@ -23,15 +23,15 @@
                 <div class="form-outline mb-2 row">
                     <div class="col-lg-5">
                         <label class="form-label" for="registerFirstName">First Name</label>
-                        <input type="text" id="registerFirstName" name="registerFirstName" class="form-control" placeholder="Characters only, min. of  1" required/>
+                        <input type="text" id="registerFirstName" name="registerFirstName" class="form-control1" placeholder="Characters only, min. of  1."/>
                     </div>
                     <div class="col-lg-5 col-sm-8">
                         <label class="form-label" for="registerLastName">Last Name</label>
-                        <input type="text" id="registerLastName" name="registerLasteName" class="form-control" placeholder="Characters only, min. of  2" required/>
+                        <input type="text" id="registerLastName" name="registerLasteName" class="form-control1" placeholder="Characters only, min. of  2."/>
                     </div>
                     <div class="col-lg-2 col-sm-4">
                         <label class="form-label" for="registerMiddleName">Middle Name</label>
-                        <input type="text" id="registerMiddleName" name="registerMiddleName" class="form-control" placeholder="Characters only"/>
+                        <input type="text" id="registerMiddleName" name="registerMiddleName" class="form-control1" placeholder="Characters only."/>
                     </div>
 
                 </div>
@@ -39,26 +39,26 @@
                 <!-- Username input -->
                 <div class="form-outline mb-2">
                     <label class="form-label" for="registerUsername">Preferred Username</label>
-                    <input type="text" id="registerUsername" name="registerUsername" class="form-control" placeholder="Minimum of 4, maximum of 5" required/>
+                    <input type="text" id="registerUsername" name="registerUsername" class="form-control1" placeholder="Minimum of 4, maximum of 5."/>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-2">
                     <label class="form-label" for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" name="registerPassword" class="form-control" placeholder="Type your password" required />
+                    <input type="password" id="registerPassword" name="registerPassword" class="form-control1" placeholder="Type your password."/>
                 </div>
 
                 <!-- Repeat Password input -->
                 <div class="form-outline mb-2">
                     <label class="form-label" for="registerRepeatPassword">Confirm Password</label>
-                    <input type="password" id="registerRepeatPassword" class="form-control" placeholder="Repeat your password" required />
+                    <input type="password" id="registerRepeatPassword" class="form-control1" placeholder="Repeat your password."/>
 
                 </div>
 
                 <!-- Address input -->
                 <div class="form-outline mb-2">
                     <label class="form-label" for="registerAddress">Complete Address</label>
-                    <input type="address" id="registerAddress" name="registerAddress" class="form-control" placeholder="Type your address" required/>
+                    <input type="address" id="registerAddress" name="registerAddress" class="form-control1" placeholder="Type your address."/>
 
                 </div>
 
@@ -66,11 +66,11 @@
                 <div class="form-outline mb-2 row">
                     <div class="col-6">
                         <label class="form-label" for="registerBirthday">Birthday</label>
-                        <input type="date" id="registerBrithday" name="registerBirthday" class="form-control" required/>
+                        <input type="date" id="registerBrithday" name="registerBirthday" class="form-control1" required/>
                     </div>
                     <div class="col-6">
                         <label class="form-label" for="registerNumber">Mobile Number</label>
-                        <input type="number" id="registerNumber" name="registerNumber" class="form-control" placeholder="11-digit numbers only." required/>
+                        <input type="number" id="registerNumber" name="registerNumber" class="form-control1" placeholder="11-digit numbers only."/>
                     </div>
                 </div>
 
