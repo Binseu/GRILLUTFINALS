@@ -42,7 +42,7 @@
                     </div>
                 </fieldset>
 
-                <!-- Submit button -->
+                <!-- Submit button  -->
                 <button type="submit" class="btn btn-primary btn-block mb-4 col-12">LOGIN</button>
 
                 <!-- Register buttons -->
