@@ -32,7 +32,7 @@
                         <input type="password" id="login_password" class="form-control1"  placeholder="Password">
                     </div>
 
-                    <!-- 2 column grid layout for inline styling -->
+                    <!-- 2 column grid layout for inline styling --> <!-- 2 column grid layout for inline styling --><!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4">
                         <div class="col d-flex justify-content-center">
                         </div>
