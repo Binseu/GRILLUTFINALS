@@ -5,12 +5,15 @@
 package ph.pup.itech.grillut.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ph.pup.itech.grillut.dao.UserDao;
+import ph.pup.itech.grillut.dao.UserFormDB;
 import ph.pup.itech.grillut.model.UserModel;
 
 public class UserPage extends HttpServlet {
@@ -21,8 +24,15 @@ public class UserPage extends HttpServlet {
         String action = request.getServletPath();
         switch (action) {
             case "/user/add":
-                getUser(request, response);
+            {
+                try {
+                    getUser(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             default:
                 showForm(request, response);
                 break;
@@ -36,7 +46,7 @@ public class UserPage extends HttpServlet {
     }
 
     private void getUser(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         String userID = request.getParameter("userID");
         String userFirstName = request.getParameter("userFN");
         String userMiddleName = request.getParameter("userMN");
@@ -48,12 +58,24 @@ public class UserPage extends HttpServlet {
         UserDao userDao = new UserDao();
         UserModel getUser = userDao.getUserDetails(user);
 
-        String message = getUser.getuserID() + " user has been added.";
+        UserFormDB reg = new UserFormDB();
+        boolean UserFormDB = reg.UserForm(userID, userFirstName, userMiddleName, userLastName, userRole);
 
-        request.setAttribute("user", getUser);
-        request.setAttribute("message", message);
+        if (UserFormDB) {
+            String message = getUser.getuserID() + " user has been added.";
 
-        System.out.println(message);
+            request.setAttribute("user", getUser);
+            request.setAttribute("message", message);
+
+            System.out.println(message);
+        } else {
+            String message = "Database Query Error";
+
+            request.setAttribute("user", getUser);
+            request.setAttribute("message", message);
+
+            System.out.println(message);
+        }
 
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/usermng.jsp");
         rd.forward(request, response);
