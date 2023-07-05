@@ -5,11 +5,14 @@
 package ph.pup.itech.grillut.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ph.pup.itech.grillut.dao.PrdFormDB;
 import ph.pup.itech.grillut.model.ProductModel;
 import ph.pup.itech.grillut.dao.ProductDao;
 
@@ -21,8 +24,15 @@ public class addProduct extends HttpServlet {
         String action = request.getServletPath();
         switch (action) {
             case "/products/add":
-                getProduct(request, response);
+            {
+                try {
+                    getProduct(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(addProduct.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             default:
                 showForm(request, response);
                 break;
@@ -36,7 +46,7 @@ public class addProduct extends HttpServlet {
     }
 
     private void getProduct(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         int productID = Integer.parseInt(request.getParameter("productID"));
         String productName = request.getParameter("productName");
         String productDescription = request.getParameter("productDescription");
@@ -46,17 +56,29 @@ public class addProduct extends HttpServlet {
 
         ProductModel prd = new ProductModel(
                 productID, productName, productDescription, productSize, productPrice, productQuantity);
-
         ProductDao productDao = new ProductDao();
         ProductModel getProduct = productDao.getProductDetails(prd);
 
-        String message = getProduct.getproductName() + " with " + getProduct.getproductID() + " has been added to inventory.";
+        PrdFormDB reg = new PrdFormDB();
+        boolean PrdFormDB = reg.createPrdForm(productID, productName, productDescription, productSize, productPrice, productQuantity);
 
-        request.setAttribute("product", getProduct);
-        request.setAttribute("message", message);
-        
-        System.out.println(message);
-        
+        if (PrdFormDB) {
+            String message = getProduct.getproductName() + " with " + getProduct.getproductID() + " has been added to inventory.";
+
+            request.setAttribute("product", getProduct);
+            request.setAttribute("message", message);
+
+            System.out.println(message);
+        } else {
+            String message = "Database Query Error";
+
+            request.setAttribute("product", getProduct);
+            request.setAttribute("message", message);
+
+            System.out.println(message);
+
+        }
+
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/products.jsp");
         rd.forward(request, response);
     }

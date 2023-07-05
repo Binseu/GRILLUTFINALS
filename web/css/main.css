@@ -365,6 +365,7 @@ th {
   border-width: 0; }
 
 label {
+  margin-bottom: 9px;
   display: inline-block; }
 
 button {

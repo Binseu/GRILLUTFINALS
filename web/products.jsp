@@ -25,7 +25,7 @@
                     <label for="inputProductName">Product Name:</label>
                     <input type="text" class="form-control" id="inputProductName" name="name">
                 </div>
-                <button type="submit" class="btn btn-primary">SEARCH</button>
+                <button type="submit" class="btn btn-primary mt-3">SEARCH</button>
             </form>
         </div>
 
