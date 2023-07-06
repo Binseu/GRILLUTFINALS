@@ -48,11 +48,8 @@ public class UserPage extends HttpServlet {
             throws ServletException, IOException, ClassNotFoundException {
 
         
-        String rdPage = "/usermng.jsp";
         
-        if (request.getParameter("UserFormDB") != null) {
-
-            
+                   
             String userID = request.getParameter("userID");
             String userFirstName = request.getParameter("userFN");
             String userMiddleName = request.getParameter("userMN");
@@ -83,8 +80,8 @@ public class UserPage extends HttpServlet {
                 System.out.println(message);
             }
 
-        }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(rdPage);
+        
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/usermng.jsp");
         rd.forward(request, response);
     }
 
