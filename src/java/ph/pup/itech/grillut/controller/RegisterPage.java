@@ -5,11 +5,14 @@
 package ph.pup.itech.grillut.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ph.pup.itech.grillut.dao.RegisterDB;
 import ph.pup.itech.grillut.dao.RegisterDao;
 import ph.pup.itech.grillut.model.RegisterModel;
 
@@ -21,8 +24,15 @@ public class RegisterPage extends HttpServlet {
         String action = request.getServletPath();
         switch (action) {
             case "/customer/registration/add":
-                registerUser(request, response);
+            {
+                try {
+                    registerUser(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                 break;
+
             default:
                 showForm(request, response);
                 break;
@@ -36,7 +46,7 @@ public class RegisterPage extends HttpServlet {
     }
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ClassNotFoundException {
         String registerFirstName = request.getParameter("registerFirstName");
         String registerMiddleName = request.getParameter("registerMiddleName");
         String registerLastName = request.getParameter("registerLast");
@@ -51,11 +61,22 @@ public class RegisterPage extends HttpServlet {
         RegisterDao registerDao = new RegisterDao();
         RegisterModel registered = registerDao.getRegisterDetails(customer);
 
-        String message = registered.getregisterUsername() + " customer has been added.";
+        RegisterDB reg = new RegisterDB();
+        boolean RegisterDB = reg.RegisterForm(registerFirstName, registerMiddleName, registerLastName, registerUsername, registerPassword, registerAddress, registerBirthday, registerNumber);
 
-        request.setAttribute("message", message);
-        System.out.println(message);
+        if (RegisterDB) {
+            String message = registered.getregisterUsername() + " customer has been added.";
 
+            request.setAttribute("message", message);
+            System.out.println(message);
+        } else {
+            String message = "Database Query Error";
+            
+            request.setAttribute("message", message);
+
+            System.out.println(message);
+
+        }
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }

@@ -23,15 +23,14 @@ public class UserPage extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action) {
-            case "/user/add":
-            {
+            case "/user/add": {
                 try {
                     getUser(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                break;
+            break;
 
             default:
                 showForm(request, response);
@@ -47,37 +46,45 @@ public class UserPage extends HttpServlet {
 
     private void getUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
-        String userID = request.getParameter("userID");
-        String userFirstName = request.getParameter("userFN");
-        String userMiddleName = request.getParameter("userMN");
-        String userLastName = request.getParameter("userLN");
-        String userRole = request.getParameter("userRole");
 
-        UserModel user = new UserModel(
-                userID, userFirstName, userMiddleName, userLastName, userRole);
-        UserDao userDao = new UserDao();
-        UserModel getUser = userDao.getUserDetails(user);
+        
+        String rdPage = "/usermng.jsp";
+        
+        if (request.getParameter("UserFormDB") != null) {
 
-        UserFormDB reg = new UserFormDB();
-        boolean UserFormDB = reg.UserForm(userID, userFirstName, userMiddleName, userLastName, userRole);
+            
+            String userID = request.getParameter("userID");
+            String userFirstName = request.getParameter("userFN");
+            String userMiddleName = request.getParameter("userMN");
+            String userLastName = request.getParameter("userLN");
+            String userRole = request.getParameter("userRole");
 
-        if (UserFormDB) {
-            String message = getUser.getuserID() + " user has been added.";
+            UserModel user = new UserModel(
+                    userID, userFirstName, userMiddleName, userLastName, userRole);
+            UserDao userDao = new UserDao();
+            UserModel getUser = userDao.getUserDetails(user);
 
-            request.setAttribute("user", getUser);
-            request.setAttribute("message", message);
+            UserFormDB reg = new UserFormDB();
+            boolean UserFormDB = reg.UserForm(userID, userFirstName, userMiddleName, userLastName, userRole);
 
-            System.out.println(message);
-        } else {
-            String message = "Database Query Error";
+            if (UserFormDB) {
+                String message = getUser.getuserID() + " user has been added.";
 
-            request.setAttribute("user", getUser);
-            request.setAttribute("message", message);
+                request.setAttribute("user", getUser);
+                request.setAttribute("message", message);
 
-            System.out.println(message);
+                System.out.println(message);
+            } else {
+                String message = "Database Query Error";
+
+                request.setAttribute("user", getUser);
+                request.setAttribute("message", message);
+
+                System.out.println(message);
+            }
+
         }
-
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/usermng.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(rdPage);
         rd.forward(request, response);
     }
 

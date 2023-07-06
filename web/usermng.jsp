@@ -29,8 +29,6 @@
             </form>
         </div>
 
-
-
         <section class="d-flex container-lg justify-content-center">
             <!-- Table List -->
             <div class="container mt-5">
@@ -46,11 +44,24 @@
                             <th>Login Status</th>
                             <th>Account Status</th>
                         </tr>
-                    </thead>
-                    <tbody id='userList' class="mb-3" style='height: 45vh;'>
+                    </thead>                                                                     
+                    <tbody id='userList' class="mb-3" style='height: 45vh;'>                   
+                        <c:forEach items="${allUsers}" var="user">
+                        <tr>                                       
+                            <td>${user.userID}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>${user.userRole}</td>                           
+                            <td>
+                                <a class="btn btn-sm btn-link" type="button" class="btn-close" data-bs-dismiss="modal" aria-label=" href="${pageContext.request.contextPath}" >Edit</a>
+                                <a class="btn btn-sm btn-link" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="href="${pageContext.request.contextPath}" >Delete</a>
+                            </td>                                       
+                        </tr>
+                    </c:forEach>                        
                     </tbody>
                 </table>
-                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#userformModal">ADD USER</button>
+                <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#userformModal" >ADD USER</button>
             </div>
         </section>
 
@@ -74,7 +85,7 @@
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
-                        
+
                 </div>
             </div>
         </div>
