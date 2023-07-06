@@ -28,7 +28,7 @@ public class UserFormDB {
 
         try {
 
-            String query = "INSERT INTO clientregform ("
+            String query = "INSERT INTO clientuserform ("
                     + "userID,"
                     + "userFirstName,"
                     + "userMiddleName,"
