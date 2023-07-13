@@ -37,6 +37,19 @@
         <url-pattern>/user/add</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>UserPage</servlet-name>
+        <url-pattern>/user/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserPage</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserPage</servlet-name>
+        <url-pattern>/user/edit/submit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
         <servlet-name>RegisterPage</servlet-name>
         <url-pattern>/customer/registration</url-pattern>
     </servlet-mapping>

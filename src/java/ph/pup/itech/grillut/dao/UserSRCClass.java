@@ -24,12 +24,12 @@ public class UserSRCClass {
         ResultSet rs = null;
 
         try {
-            String query = "SELECT"
-                    + "userID,"
-                    + "userFirstName,"
-                    + "userMiddleName,"
-                    + "userLastName,"
-                    + "userRole) "
+            String query = "SELECT "
+                    + "userID, "
+                    + "userFirstName, "
+                    + "userMiddleName, "
+                    + "userLastName, "
+                    + "userRole "
                     + "FROM clientuserform";
 
             conn = ConnectionPool.getConnection();
@@ -73,7 +73,8 @@ public class UserSRCClass {
             }
 
         }
-
+        
+        System.out.println(allUsers);
         return allUsers;
     }
 

@@ -47,18 +47,23 @@
                     </thead>                                                                     
                     <tbody id='userList' class="mb-3" style='height: 45vh;'>                   
                         <c:forEach items="${allUsers}" var="user">
-                        <tr>                                       
-                            <td>${user.userID}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>${user.userRole}</td>                           
-                            <td>
-                                <a class="btn btn-sm btn-link" type="button" class="btn-close" data-bs-dismiss="modal" aria-label=" href="${pageContext.request.contextPath}" >Edit</a>
-                                <a class="btn btn-sm btn-link" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="href="${pageContext.request.contextPath}" >Delete</a>
-                            </td>                                       
-                        </tr>
-                    </c:forEach>                        
+                            <tr>                                       
+                                <td>${user.userID}</td>
+                                <td></td>
+                                <td></td>
+                                <td>${user.userRole}</td>  
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/user/edit?userID=${user.userID}">
+                                    <button class="btn btn-primary btn-sm">Edit</button>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/user/delete?userID=${user.userID}">
+                                    <button class="btn btn-outline-primary btn-sm" >Delete</button>
+                                    </a> 
+                                </td>   
+                            </tr>
+                        </c:forEach>                        
                     </tbody>
                 </table>
                 <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#userformModal" >ADD USER</button>
@@ -89,8 +94,7 @@
                 </div>
             </div>
         </div>
-
-
+                        
         <jsp:include page="footer.jsp"/>
         <script src = "js/bootstrap.bundle.min.js" ></script>
     </body>

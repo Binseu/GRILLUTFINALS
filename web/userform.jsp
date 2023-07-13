@@ -70,7 +70,7 @@
                 alert("User Role can't be empty.");
                 return false;
             }
-
+            
             return true;
         }
     </script>

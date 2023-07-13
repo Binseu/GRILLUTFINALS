@@ -15,5 +15,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/css/media/Logo.svg">
 <!--        jquery-->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.4.min.js"></script>
 
