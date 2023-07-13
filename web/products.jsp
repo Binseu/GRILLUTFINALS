@@ -39,8 +39,8 @@
                 <table id="productTable" class="table">
                     <thead>
                         <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
+                            <th>Product ID</th>        
+                            <th>Name</th>
                             <th>Description</th>
                             <th>Size</th>
                             <th>Price</th>
@@ -48,6 +48,24 @@
                         </tr>
                     </thead>
                     <tbody id='productList' class="mb-3" style='height: 45vh;'>
+                        <c:forEach items="${allProducts}" var="prod">
+                            <tr>
+                                <td>${prod.productID}</td>
+                                <td>${prod.productName}</td>
+                                <td>${prod.productDescription}</td>
+                                <td>${prod.productSize}</td>
+                                <td>${prod.productPrice}</td>
+                                <td>${prod.productQuantity}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/products/edit?productID=${prod.productID}">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/products/delete?productID=${prod.productID}">
+                                        <button class="btn btn-outline-primary btn-sm" >Delete</button>
+                                    </a> 
+                                </td>   
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
                 <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#prdformModal">ADD PRODUCT</button>
@@ -74,7 +92,7 @@
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
-                        
+
                 </div>
             </div>
         </div>

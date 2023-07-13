@@ -158,7 +158,7 @@ public class UserPage extends HttpServlet {
         boolean editUser = edit.editUser(userID, userFirstName, userMiddleName, userLastName, userRole, user_ID);
 
         if (editUser) {
-            String message = "User update for " + userID + " is successful!";
+            String message = "User update for " + user_ID + " is successful!";
             request.setAttribute("message", message);
         }
         
@@ -178,7 +178,7 @@ public class UserPage extends HttpServlet {
         boolean editUser = edit.deleteUser(userID);
 
         if (editUser) {
-            String message = userID + " is deleted successful!";
+            String message = userID + " is deleted successfully!";
             request.setAttribute("message", message);
         }
 

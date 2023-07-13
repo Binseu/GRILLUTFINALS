@@ -27,6 +27,10 @@ public class ProductModel {
         this.productQuantity = productQuantity;
     }
 
+    public ProductModel() {
+
+    }
+
     public int getproductID() {
         return productID;
     }

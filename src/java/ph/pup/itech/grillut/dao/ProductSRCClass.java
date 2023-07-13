@@ -1,0 +1,83 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ph.pup.itech.grillut.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import ph.pup.itech.grillut.model.ProductModel;
+
+/**
+ *
+ * @author LAPTOP - Binseu
+ */
+public class ProductSRCClass {
+
+    public ArrayList<ProductModel> getallProducts() throws ClassNotFoundException {
+        ArrayList<ProductModel> allProducts = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            String query = "SELECT "
+                    + "productID, "
+                    + "productName, "
+                    + "productDescription, "
+                    + "productSize, "
+                    + "productPrice, "
+                    + "productQuantity "
+                    + "FROM clientprdform";
+
+            conn = ConnectionPool.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ProductModel product = new ProductModel();
+                product.setproductID(rs.getInt("productID"));
+                product.setproductName(rs.getString("productName"));
+                product.setproductDescription(rs.getString("productDescription"));
+                product.setproductSize(rs.getString("productSize"));
+                product.setproductPrice(rs.getDouble("productPrice"));
+                product.setproductQuantity(rs.getInt("productQuantity"));
+                allProducts.add(product);
+            }
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("getallUser error" + e);
+        } finally {                       
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.out.println("SQLException " + e.getMessage());
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    System.out.println("SQLException " + e.getMessage());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println("SQLException " + e.getMessage());
+                }
+            }
+
+        }
+        
+        System.out.println(allProducts);
+        return allProducts;
+    }
+
+}
