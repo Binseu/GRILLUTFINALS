@@ -38,6 +38,11 @@
 
                 <!-- Username input -->
                 <div class="form-outline mb-2">
+                    <label class="form-label" for="UID">User ID</label>
+                    <input type="text" id="UID" class="form-control1" name="userID" placeholder="5 Characters."/>
+                </div>
+
+                <div class="form-outline mb-2">
                     <label class="form-label" for="registerUsername">Preferred Username</label>
                     <input type="text" id="registerUsername" name="registerUsername" class="form-control1" placeholder="Minimum of 4, maximum of 5."/>
                 </div>
@@ -93,6 +98,15 @@
                 var specialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
 
                 function rgstrformValidation() {
+                    var UID = $("#UID").val();
+                    console.log("User ID: " + UID);
+                    if (UID.length < 1) {
+                        alert("User ID can't be empty.");
+                    } else if (UID.length < 5 || UID.length > 5) {
+                        alert("User ID must be exactly 5 characters.");
+                        return false;
+                    }
+
                     var registerFirstName = $("#registerFirstName").val();
                     console.log("First Name: " + registerFirstName);
                     if (!registerFirstName.match(charactersonly)) {
