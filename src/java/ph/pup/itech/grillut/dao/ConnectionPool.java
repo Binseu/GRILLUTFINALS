@@ -24,7 +24,7 @@ public class ConnectionPool {
             Class.forName(driver);
             
             String url = "jdbc:mysql://localhost:3306/grillut?serverTimezone=UTC";
-            conn = (Connection) DriverManager.getConnection(url, "root", "1234");
+            conn = (Connection) DriverManager.getConnection(url, "root", "Iamanintrovert21");
             
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);

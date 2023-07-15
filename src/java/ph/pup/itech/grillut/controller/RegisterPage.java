@@ -23,15 +23,41 @@ public class RegisterPage extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action) {
-            case "/customer/registration/add":
-            {
+            case "/customer/registration/add": {
                 try {
                     registerUser(request, response);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-                break;
+            break;
+
+            case "/customer/registration/edit": {
+                try {
+                    updateregisterUser(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+
+            case "/customer/registration/edit/submit": {
+                try {
+                    editregisterUser(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
+
+            case "/customer/registration/delete": {
+                try {
+                    deleteregisterUser(request, response);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            break;
 
             default:
                 showForm(request, response);
@@ -47,6 +73,7 @@ public class RegisterPage extends HttpServlet {
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
+        
         String registerFirstName = request.getParameter("registerFirstName");
         String registerMiddleName = request.getParameter("registerMiddleName");
         String registerLastName = request.getParameter("registerLast");
@@ -71,12 +98,15 @@ public class RegisterPage extends HttpServlet {
             System.out.println(message);
         } else {
             String message = "Database Query Error";
-            
+
             request.setAttribute("message", message);
 
             System.out.println(message);
 
         }
+        
+        showDB(request, response);
+        
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }
@@ -87,4 +117,5 @@ public class RegisterPage extends HttpServlet {
                 "/register.jsp");
         rd.forward(request, response);
     }
+
 }

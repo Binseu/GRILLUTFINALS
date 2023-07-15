@@ -31,36 +31,72 @@ public class RegisterModel {
         this.registerNumber = registerNumber;
     }
 
+    public RegisterModel() {
+
+    }
+
     public String getregisterFirstName() {
         return registerFirstName;
+    }
+
+    public void setregisterFirtName(String registerFirstName) {
+        this.registerFirstName = registerFirstName;
     }
 
     public String getregisterMiddleName() {
         return registerMiddleName;
     }
 
+    public void setregisterMiddleName(String registerMiddleName) {
+        this.registerMiddleName = registerMiddleName;
+    }
+
     public String getregisterLastName() {
         return registerLastName;
+    }
+
+    public void setuserID(String userID) {
+        this.userID = userID;
     }
 
     public String getregisterUsername() {
         return registerUsername;
     }
 
+    public void setuserID(String userID) {
+        this.userID = userID;
+    }
+
     public String getregisterPassword() {
         return registerPassword;
+    }
+
+    public void setuserID(String userID) {
+        this.userID = userID;
     }
 
     public String getregisterAddress() {
         return registerAddress;
     }
 
+    public void setuserID(String userID) {
+        this.userID = userID;
+    }
+
     public String getregisterBirthday() {
         return registerBirthday;
     }
 
+    public void setuserID(String userID) {
+        this.userID = userID;
+    }
+
     public String getregisterNumber() {
         return registerNumber;
+    }
+
+    public void setuserID(String userID) {
+        this.userID = userID;
     }
 
 }

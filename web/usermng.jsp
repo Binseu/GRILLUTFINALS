@@ -49,9 +49,9 @@
                         <c:forEach items="${allUsers}" var="user">
                             <tr>                                       
                                 <td>${user.userID}</td>
+                                <td>$(register.registerUsername)</td>
                                 <td></td>
-                                <td></td>
-                                <td>${user.userRole}</td>  
+                                <td>${user.userRole}</td>
                                 <td></td>
                                 <td></td>
                                 <td>
