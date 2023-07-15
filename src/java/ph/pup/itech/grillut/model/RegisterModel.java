@@ -10,14 +10,14 @@ package ph.pup.itech.grillut.model;
  */
 public class RegisterModel {
 
-    private final String registerFirstName;
-    private final String registerMiddleName;
-    private final String registerLastName;
-    private final String registerUsername;
-    private final String registerPassword;
-    private final String registerAddress;
-    private final String registerBirthday;
-    private final String registerNumber;
+    private String registerFirstName;
+    private String registerMiddleName;
+    private String registerLastName;
+    private String registerUsername;
+    private String registerPassword;
+    private String registerAddress;
+    private String registerBirthday;
+    private String registerNumber;
 
     public RegisterModel(
             String registerFirstName, String registerMiddleName, String registerLastName, String registerUsername, String registerPassword, String registerAddress, String registerBirthday, String registerNumber) {
@@ -55,48 +55,48 @@ public class RegisterModel {
         return registerLastName;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getregisterUsername() {
         return registerUsername;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getregisterPassword() {
         return registerPassword;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getregisterAddress() {
         return registerAddress;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getregisterBirthday() {
         return registerBirthday;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
     public String getregisterNumber() {
         return registerNumber;
     }
 
-    public void setuserID(String userID) {
-        this.userID = userID;
-    }
+//    public void setuserID(String userID) {
+//        this.userID = userID;
+//    }
 
 }

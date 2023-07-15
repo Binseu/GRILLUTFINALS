@@ -32,33 +32,6 @@ public class RegisterPage extends HttpServlet {
             }
             break;
 
-            case "/customer/registration/edit": {
-                try {
-                    updateregisterUser(request, response);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            break;
-
-            case "/customer/registration/edit/submit": {
-                try {
-                    editregisterUser(request, response);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            break;
-
-            case "/customer/registration/delete": {
-                try {
-                    deleteregisterUser(request, response);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(UserPage.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            break;
-
             default:
                 showForm(request, response);
                 break;
