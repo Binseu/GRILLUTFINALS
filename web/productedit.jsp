@@ -21,7 +21,7 @@
                     <c:forEach items="${productDetails}" var="product">
                         <div class="">
                             <label class="form-label" for="PID">Product ID</label>
-                            <input type="number" id="PID" class="form-control1" placeholder="Must be greater than 0." name="productID" value="${product.productID}"/>
+                            <input type="number" id="PID" class="form-control1" placeholder="Must be greater than 0." name="productID" value="${product.productID}" disabled="true"/>
                         </div>
                         <div class="">
                             <label class="form-label" for="PN">Product Name</label>
